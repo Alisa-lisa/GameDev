@@ -4,6 +4,10 @@ use tetra::{Context, ContextBuilder, State};
 use tetra::math::Vec2;
 use std::time::Duration;
 
+const HEIGHT: f32 = 1280.0;
+const WIDTH: f32 = 720.0;
+
+
 struct GameState {
     background_texture: Texture,
     player: Animation,
@@ -14,7 +18,7 @@ impl State for GameState {
         graphics::clear(ctx, Color::rgb(0.392, 0.584, 0.929));
         graphics::draw(ctx, &self.background_texture, DrawParams::new()
                        .clip(Rectangle::new(0., 176., 160., 128.))
-                       .scale((5.,5.).into()));
+                       .scale((HEIGHT / 160.0, WIDTH / 128.0).into()));
         graphics::draw(ctx, &self.player, DrawParams::new().scale((3.0, 3.0).into()));
         self.player.advance(ctx); 
         Ok(())
@@ -31,7 +35,7 @@ impl GameState {
 }
 
 fn main() -> tetra::Result {
-    ContextBuilder::new("JuicyGame", 1280, 720)
+    ContextBuilder::new("JuicyGame", HEIGHT as i32, WIDTH as i32)
         .quit_on_escape(true)
         .build()?
         .run(GameState::new)
