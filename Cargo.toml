@@ -1,9 +1,8 @@
 [package]
+authors = ["alisa-lisa <alisa.dammer@gmail.com>", "svenstaro <svenstaro@gmail.com"]
 name = "GameDev"
 version = "0.1.0"
-authors = ["alisa-lisa <alisa.dammer@gmail.com>", "svenstaro"]
-edition = "2020"
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+edition = "2018"
 
 [dependencies]
+tetra = "0.4"
